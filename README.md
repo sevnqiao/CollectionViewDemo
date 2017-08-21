@@ -1,0 +1,2 @@
+# CollectionViewDemo
+适配iOS9之前的collectionView拖拽重排
