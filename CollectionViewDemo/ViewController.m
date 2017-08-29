@@ -217,14 +217,8 @@
 {
     if (sourceIndexPath.section == destinationIndexPath.section) // 同一个 section 间移动
     {
-        if (destinationIndexPath.item > sourceIndexPath.item) {
-            for (NSUInteger i = sourceIndexPath.item; i < destinationIndexPath.item ; i ++) {
-                [self.dataArray[sourceIndexPath.section] exchangeObjectAtIndex:i withObjectAtIndex:i + 1];
-            }
-        }else{
-            for (NSUInteger i = sourceIndexPath.item; i > destinationIndexPath.item ; i --) {
-                [self.dataArray[sourceIndexPath.section] exchangeObjectAtIndex:i withObjectAtIndex:i - 1];
-            }
+        for (NSInteger i = MIN(sourceIndexPath.item, destinationIndexPath.item); i < MAX(sourceIndexPath.item, destinationIndexPath.item); i++) {
+            [self.dataArray[sourceIndexPath.section] exchangeObjectAtIndex:i withObjectAtIndex:i + 1];
         }
     }
     else // 不同 section 之间移动 ,  删除 sourceData, 插入到 destinationData
